@@ -1,3 +1,5 @@
+source("R/examples/plot_disparity_decomp.R")
+
 #test code for ordinal
 
 
@@ -17,6 +19,10 @@ out = pb.fit(bmi_cat ~ age + poverty,
              family = "ordinal")
 
 print(out)
+print(pb_plot_disparity_decomp(out))
+saved_path = pb_save_disparity_plot(out, "pb_decomposition_ordinal.png", out_dir = "images")
+cat("Saved plot:", saved_path, "\n")
+pb_describe_result(out, "Ordinal BMI category model")
 
 
 #test code for binary outcome
@@ -37,6 +43,10 @@ out = pb.fit(bmi_bin ~ age + poverty,
              family = "multinomial")
 
 print(out)
+print(pb_plot_disparity_decomp(out))
+saved_path = pb_save_disparity_plot(out, "pb_decomposition_multinomial.png", out_dir = "images")
+cat("Saved plot:", saved_path, "\n")
+pb_describe_result(out, "Binary BMI model (multinomial)")
 
 #test code for continuous outcome
 
@@ -56,4 +66,7 @@ out = pb.fit(bmi_con ~ age + poverty,
              family = "gaussian")
 
 print(out)
-
+print(pb_plot_disparity_decomp(out))
+saved_path = pb_save_disparity_plot(out, "pb_decomposition_gaussian.png", out_dir = "images")
+cat("Saved plot:", saved_path, "\n")
+pb_describe_result(out, "Continuous BMI model (gaussian)")

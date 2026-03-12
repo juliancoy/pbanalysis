@@ -59,3 +59,29 @@ plot(out)
 # display summary
 summary(out)
 ```
+
+## Example output plots
+
+Running `R/examples/examples_2.R` now produces disparity decomposition charts and saves them in `images/`.
+
+How to read these charts:
+- Blue bar: observed disparity (`overall.disp`, White minus Black).
+- Orange bar: unexplained disparity after adjustment (`unexplained.disp`).
+- Black error bar: 95% confidence interval for unexplained disparity.
+- Dashed horizontal line at 0: no disparity.
+- Positive values indicate higher values/proportions for White; negative values indicate higher values/proportions for Black.
+
+### Ordinal BMI category model
+This figure shows category-specific decomposition for BMI categories (one bar pair per non-reference category probability).
+
+![PB decomposition for ordinal BMI model](images/pb_decomposition_ordinal.png)
+
+### Binary BMI model (multinomial)
+This figure shows decomposition for the binary BMI outcome (`level=0` in the script). In this run, raw and unexplained disparities point in opposite directions.
+
+![PB decomposition for binary BMI model](images/pb_decomposition_multinomial.png)
+
+### Continuous BMI model (gaussian)
+This figure shows decomposition for continuous BMI. In this run, the unexplained disparity is negative and the 95% CI is entirely below zero.
+
+![PB decomposition for continuous BMI model](images/pb_decomposition_gaussian.png)
